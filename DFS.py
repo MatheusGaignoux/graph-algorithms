@@ -10,8 +10,8 @@ def dfs(path, graph, visited, components, count = None):
 
     visited[at] = True
     components[at] = count
-
     neighbours = graph[at]
+    
     for next in neighbours:
         path.append(next)
         print(path)

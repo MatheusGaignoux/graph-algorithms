@@ -1,5 +1,3 @@
-# BUGGED
-
 import sys
 from DFS import dfs
 
