@@ -1,13 +1,14 @@
 # DFS is a traversal algorithm that allow us to explore the nodes and edges of a graph. 
-# Time complexity: O(V + E), i.e., it is directly proportional to size of the graph.
+# Time complexity: O(V + E), i.e., it is directly proportional to the size of the graph.
 
 import time
 import sys
 
-def dfs(at, graph, visited):
+def dfs(at, graph, visited, path, components, count = None):
     if visited[at]: return
 
     visited[at] = True
+    components[at] = count
 
     neighbours = graph[at]
     for next in neighbours:
@@ -15,22 +16,28 @@ def dfs(at, graph, visited):
         print(path)
         time.sleep(.5)
 
-        dfs(next, graph, visited)
+        dfs(next, graph, visited, path, components, count)
         
         path.pop()
         print(path)
         time.sleep(.5)
 
+# In order to run this script the starting node of the graph search as well as the graph needs to be passed as args.
+# Each node must be represented as an integer.
+# USAGE: python DFS.py (starting node: int) (node zero neighbors list) (node one neighbors list) ...
+# EXEMPLE: python DFS.py 0 1,5 0,6 4 4 2,3,6 0,6 1,4,5
 if __name__ == "__main__":
     first = int(sys.argv[1])
     graph = []
     path = [first]
     visited = []
+    components = []
 
     for neighbours in sys.argv[2:]:
         graph.append(list(map(lambda x: int(x), neighbours.split(","))))
         visited.append(False)
+        components.append(None)
     
     print(path)
     time.sleep(0.5)
-    dfs(first, graph, visited)
+    dfs(first, graph, visited, path, components)
