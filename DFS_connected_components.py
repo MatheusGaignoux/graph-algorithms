@@ -1,5 +1,3 @@
-# BUGGED
-
 import sys
 from DFS import dfs
 
@@ -17,7 +15,7 @@ if __name__ == "__main__":
     visited = []
     components = []
 
-    for neighbours in sys.argv[2:]:
+    for neighbours in sys.argv[1:]:
         graph.append(list(map(lambda x: int(x), neighbours.split(","))))
         visited.append(False)
         components.append(0)

@@ -4,19 +4,20 @@
 import time
 import sys
 
-def dfs(at, graph, visited, path, components, count = None):
+def dfs(path, graph, visited, components, count = None):
+    at = path[-1]
     if visited[at]: return
 
     visited[at] = True
     components[at] = count
-
     neighbours = graph[at]
+    
     for next in neighbours:
         path.append(next)
         print(path)
         time.sleep(.5)
 
-        dfs(next, graph, visited, path, components, count)
+        dfs(path, graph, visited, components, count)
         
         path.pop()
         print(path)
@@ -40,4 +41,4 @@ if __name__ == "__main__":
     
     print(path)
     time.sleep(0.5)
-    dfs(first, graph, visited, path, components)
+    dfs(path, graph, visited, components)
