@@ -30,14 +30,14 @@ def dfs(path, graph, visited, components, count = None):
 if __name__ == "__main__":
     first = int(sys.argv[1])
     graph = []
-    path = [first]
-    visited = []
-    components = []
 
     for neighbours in sys.argv[2:]:
         graph.append(list(map(lambda x: int(x), neighbours.split(","))))
-        visited.append(False)
-        components.append(None)
+    
+    n = len(graph)
+    visited = [False] * n
+    components = [None] * n
+    path = [first]
     
     print(path)
     time.sleep(0.5)
