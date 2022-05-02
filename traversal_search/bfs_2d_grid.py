@@ -72,4 +72,4 @@ if __name__ == "__main__":
 
     print(m)
     r, c = bfs_2d_grid(s, m)
-    print(r, c)
+    print("Exit:", r, c)
